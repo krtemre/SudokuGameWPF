@@ -1,0 +1,22 @@
+﻿<Window x:Class="SudokuGameWPF.Views.NotificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SudokuGameWPF.Views"
+        mc:Ignorable="d"
+        Title="NotificationWindow" Height="100" Width="200"
+        Background="Transparent" ResizeMode="NoResize" WindowStyle="None">
+        <Grid Background="{StaticResource AppBackGround}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <Label x:Name="lblHeader" Content="HEADER" Foreground="Red" FontWeight="Bold" FontSize="14"/>
+            </Border>
+            <TextBlock x:Name="tbInfo" Foreground="WhiteSmoke" Text="PlaceHolder PlaceHolder PlaceHolder PlaceHolder PlaceHolder PlaceHolder" 
+                   Grid.Row="1" TextWrapping="Wrap"
+                   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </Grid>
+</Window>

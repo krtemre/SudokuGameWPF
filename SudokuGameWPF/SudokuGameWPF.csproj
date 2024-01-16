@@ -62,6 +62,7 @@
     <Compile Include="Models\SudokuGenerator.cs" />
     <Compile Include="Models\SudokuGridModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NotifactionController.cs" />
     <Compile Include="ViewModel\SudokuPlaygroundVM.cs" />
     <Compile Include="Views\MainSudokuWindow.xaml.cs">
       <DependentUpon>MainSudokuWindow.xaml</DependentUpon>
@@ -70,6 +71,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\NotificationWindow.xaml.cs">
+      <DependentUpon>NotificationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PlayGroundWindow.xaml.cs">
       <DependentUpon>PlayGroundWindow.xaml</DependentUpon>
     </Compile>
@@ -77,6 +81,10 @@
       <DependentUpon>SettingsUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainSudokuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NotificationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

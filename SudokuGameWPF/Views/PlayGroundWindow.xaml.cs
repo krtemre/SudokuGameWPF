@@ -1,4 +1,5 @@
 ﻿using SudokuGameWPF.Models;
+using SudokuGameWPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -65,8 +66,9 @@ namespace SudokuGameWPF.Views
             {
                 if (lastSelected != null)
                 {
-                    if (lastSelected.Name.Equals(btn.Name))
+                    if (lastSelected.Content.Equals(btn.Content))
                     {
+                        lastSelected.IsDefault = false;
                         lastSelected = null;
                     }
                     else
@@ -105,10 +107,14 @@ namespace SudokuGameWPF.Views
                 {
                     lastButton.Content = tag;
                     PlayerManager.Instance.PlayerData.Game[x][y] = val;
+                    lastButton.Foreground = Brushes.Green;
+                    lastButton = null;
+                    lastSelected.IsDefault = false;
+                    lastSelected = null;
                 }
                 else
                 {
-                    //TODO : Warning cannot change the default or true val
+                    NotifactionController.Instance.ShowNotification(NotificationType.Warning, "TEST, TEST");
                 }
             }
         }
@@ -136,8 +142,12 @@ namespace SudokuGameWPF.Views
                 {
                     if (grid.VisualGrid.Children[i] is Button btn)
                     {
-                        int val = game[grid.Index_X * 3 + grid.Buttons.Count / 3][grid.Index_Y * 3 + grid.Buttons.Count % 3];
+                        int x = grid.Index_X * 3 + grid.Buttons.Count / 3;
+                        int y = grid.Index_Y * 3 + grid.Buttons.Count % 3;
+                        int val = game[x][y];
+
                         btn.Content = val == 0 ? "" : val.ToString();
+
                         grid.Buttons.Add(btn);
                     }
                 }

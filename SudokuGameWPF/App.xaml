@@ -16,7 +16,7 @@
         <SolidColorBrush x:Key="SelectorBtnBG" Color="Black"/>
         <SolidColorBrush x:Key="SelectorBtnPressed" Color="#FF0A175F"/>
         <SolidColorBrush x:Key="SelectorBtnHighlight" Color="#FF555555"/>
-        <SolidColorBrush x:Key="SelectorBtnSelected" Color="#FF031A9A"/>
+        <SolidColorBrush x:Key="SelectorBtnSelected" Color="#CC8CD473"/>
 
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -91,7 +91,7 @@
         <Style x:Key="PlaygroundButton" TargetType="{x:Type Button}">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="BorderBrush" Value="#7F808080"/>
             <Setter Property="BorderThickness" Value="0.5"/>
