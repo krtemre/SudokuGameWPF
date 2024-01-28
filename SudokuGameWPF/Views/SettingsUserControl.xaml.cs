@@ -1,4 +1,5 @@
-﻿using SudokuGameWPF.Models;
+﻿using SudokuGameWPF.Helpers;
+using SudokuGameWPF.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace SudokuGameWPF.Views
 
         public void OpenSettings()
         {
-            int currentDiffIndex = (int)PlayerManager.Instance.PlayerData.DiffuciltySettings;
+            int currentDiffIndex = (int)PlayerManager.Instance.PlayerData.DiffuciltySetting;
 
             for (int i = 0; i < grid_Buttons.Children.Count; i++)
             {
@@ -40,16 +41,16 @@ namespace SudokuGameWPF.Views
                 }
             }
 
-            if (grid_Buttons.Children.Count > currentDiffIndex)
+            if (grid_Buttons.Children.Count > currentDiffIndex + 1)
             {
-                if (grid_Buttons.Children[currentDiffIndex] is Button btn)
+                if (grid_Buttons.Children[currentDiffIndex + 1] is Button btn)
                 {
                     lastActiveButton = btn;
                     btn.IsDefault = true;
                 }
             }
 
-            this.Visibility = Visibility.Visible;
+            UpdateCurrentMode();
         }
 
         private void BtnDiff_Click(object sender, RoutedEventArgs e)
@@ -62,17 +63,19 @@ namespace SudokuGameWPF.Views
                 }
 
                 int diffIndex = int.Parse(btn.Tag.ToString());
-                PlayerManager.Instance.PlayerData.DiffuciltySettings = (PlayerDiffuciltySettings)diffIndex;
+                PlayerManager.Instance.PlayerData.DiffuciltySetting = (PlayerDiffuciltySettingsEnum)diffIndex;
                 PlayerManager.Instance.PlayerData.CanContinue = false;
 
                 btn.IsDefault = true;
                 lastActiveButton = btn;
             }
+
+            UpdateCurrentMode();
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        private void UpdateCurrentMode()
         {
-            this.Visibility = Visibility.Collapsed;
+            tbMode.Text = "Current Mode: " + PlayerManager.Instance.PlayerData.DiffuciltySetting.DescriptionAttr();
         }
     }
 }

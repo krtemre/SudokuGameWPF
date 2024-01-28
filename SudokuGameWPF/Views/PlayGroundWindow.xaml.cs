@@ -31,17 +31,12 @@ namespace SudokuGameWPF.Views
 
         private Button lastSelected = null;
 
-        private List<SudokuGridModel> playgroundGrids = null;
+        //private List<SudokuGridModel> playgroundGrids = null;
 
         public PlayGroundWindow()
         {
             InitializeComponent();
-            //long timeIn = DateTime.Now.Ticks;
-            InitGrids(PlayerManager.Instance.PlayerData.Game);
-            //Console.WriteLine("InitGrids : " + (DateTime.Now.Ticks - timeIn) / TimeSpan.TicksPerMillisecond + " ms");
-            //timeIn = DateTime.Now.Ticks;
-            //InitButtons(PlayerManager.Instance.PlayerData.Game);
-            //Console.WriteLine("InitButtons : " + (DateTime.Now.Ticks - timeIn) / TimeSpan.TicksPerMillisecond + " ms");
+            //InitGrids(PlayerManager.Instance.PlayerData.Game);
         }
 
         private void BtnPlayground_Click(object sender, RoutedEventArgs e)
@@ -93,65 +88,78 @@ namespace SudokuGameWPF.Views
         {
             if (lastSelected != null && lastButton != null)
             {
-                bool isTrue = string.IsNullOrEmpty(lastButton.Content.ToString());
-                string tag = lastSelected.Content.ToString();
-                int val = int.Parse(tag);
+                //bool isTrue = string.IsNullOrEmpty(lastButton.Content.ToString());
+                //string tag = lastSelected.Content.ToString();
+                //int val = int.Parse(tag);
 
-                string[] pos = lastButton.Tag.ToString().Split(',');
-                int x = int.Parse(pos[0]);
-                int y = int.Parse(pos[1]);
+                //string[] pos = lastButton.Tag.ToString().Split(',');
+                //int x = int.Parse(pos[0]);
+                //int y = int.Parse(pos[1]);
 
-                isTrue &= PlayerManager.Instance.PlayerData.SolvedGame[x][y] == val;
+                //isTrue &= PlayerManager.Instance.PlayerData.SolvedGame[x][y] == val;
 
-                if (isTrue)
-                {
-                    lastButton.Content = tag;
-                    PlayerManager.Instance.PlayerData.Game[x][y] = val;
-                    lastButton.Foreground = Brushes.Green;
-                    lastButton = null;
-                    lastSelected.IsDefault = false;
-                    lastSelected = null;
-                }
-                else
-                {
-                    NotifactionController.Instance.ShowNotification(NotificationType.Warning, "TEST, TEST");
-                }
+                //if (isTrue)
+                //{
+                //    lastButton.Content = tag;
+                //    PlayerManager.Instance.PlayerData.Game[x][y] = val;
+                //    lastButton.Foreground = Brushes.Green;
+                //    lastButton = null;
+                //    lastSelected.IsDefault = false;
+                //    lastSelected = null;
+                //}
+                //else
+                //{
+                //    NotifactionController.Instance.ShowNotification(NotificationType.Warning, "TEST, TEST");
+                //}
             }
+        }
+
+        private void HighlightByPosition(int x, int y, int gridIndex)
+        {
+            //TODO
+            //if 2,2 is selected highlight first Grid and all 2,x & x,2.
+            //Highlight differently 2,2
+        }
+
+        private void HighlightByNumber(int number)
+        {
+            //TODO 
+            //if 3 is selected highlight all 3s in game
         }
 
         private void InitGrids(List<int[]> game)
         {
-            playgroundGrids = new List<SudokuGridModel>()
-            {
-                new SudokuGridModel(0, 0, Grid0_0 ),
-                new SudokuGridModel(0, 1, Grid0_1),
-                new SudokuGridModel(0, 2, Grid0_2),
+            //playgroundGrids = new List<SudokuGridModel>()
+            //{
+            //    new SudokuGridModel(0, 0, Grid0_0 ),
+            //    new SudokuGridModel(0, 1, Grid0_1),
+            //    new SudokuGridModel(0, 2, Grid0_2),
 
-                new SudokuGridModel(1, 0, Grid1_0),
-                new SudokuGridModel(1, 1, Grid1_1),
-                new SudokuGridModel(1, 2, Grid1_2),
+            //    new SudokuGridModel(1, 0, Grid1_0),
+            //    new SudokuGridModel(1, 1, Grid1_1),
+            //    new SudokuGridModel(1, 2, Grid1_2),
 
-                new SudokuGridModel(2, 0, Grid2_0),
-                new SudokuGridModel(2, 1, Grid2_1),
-                new SudokuGridModel(2, 2, Grid2_2),
-            };
+            //    new SudokuGridModel(2, 0, Grid2_0),
+            //    new SudokuGridModel(2, 1, Grid2_1),
+            //    new SudokuGridModel(2, 2, Grid2_2),
+            //};
 
-            foreach(var grid in playgroundGrids)
-            {
-                for (int i = 0; i < grid.VisualGrid.Children.Count; i++)
-                {
-                    if (grid.VisualGrid.Children[i] is Button btn)
-                    {
-                        int x = grid.Index_X * 3 + grid.Buttons.Count / 3;
-                        int y = grid.Index_Y * 3 + grid.Buttons.Count % 3;
-                        int val = game[x][y];
+            //foreach(var grid in playgroundGrids)
+            //{
+            //    for (int i = 0; i < grid.VisualGrid.Children.Count; i++)
+            //    {
+            //        if (grid.VisualGrid.Children[i] is Button btn)
+            //        {
+            //            int x = grid.Index_X * 3 + grid.Buttons.Count / 3;
+            //            int y = grid.Index_Y * 3 + grid.Buttons.Count % 3;
+            //            int val = game[x][y];
 
-                        btn.Content = val == 0 ? "" : val.ToString();
+            //            btn.Content = val == 0 ? "" : val.ToString();
 
-                        grid.Buttons.Add(btn);
-                    }
-                }
-            }
+            //            grid.Buttons.Add(btn);
+            //        }
+            //    }
+            //}
 
         }
 

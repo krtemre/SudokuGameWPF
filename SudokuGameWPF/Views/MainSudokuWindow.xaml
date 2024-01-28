@@ -6,15 +6,21 @@
         xmlns:local="clr-namespace:SudokuGameWPF.Views"
         xmlns:app="clr-namespace:SudokuGameWPF"
         mc:Ignorable="d"
-    Title="Sudoku WPF" Height="500" Width="800" Background="{StaticResource AppBackGround}" Closing="Window_Closing">
+        Title="Sudoku WPF" Height="800" Width="700" ResizeMode="NoResize"
+        Background="{StaticResource AppBackGround}" Closing="Window_Closing">
     <Window.Resources>
+        <Style x:Key="MenuButtons" TargetType="{x:Type Button}" BasedOn="{StaticResource RoundCorner}">
+            <Setter Property="Margin" Value="60,5"/>
+            <Setter Property="FontSize" Value="50"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+        </Style>
     </Window.Resources>
     <Grid>
-        <Grid x:Name="mainMenu_grid">
+        <Grid x:Name="mainMenu_grid" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
@@ -29,14 +35,20 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <Button Style="{StaticResource RoundCorner}" x:Name="BtnPlay" Content="Play" Margin="60,5" Grid.Row="0" Click="BtnNew_Click"/>
-                    <Button Style="{StaticResource RoundCorner}" x:Name="BtnContinue" IsEnabled="{Binding CanContinue}" Content="Continue" Margin="60,5" Grid.Row="1" Click="BtnContinue_Click"/>
-                    <Button Style="{StaticResource RoundCorner}" x:Name="BtnSettings" Content="Settings" Margin="60,5" Grid.Row="2" Click="BtnSettings_Click"/>
-                    <Button Style="{StaticResource RoundCorner}" x:Name="BtnExit" Content="Exit" Margin="60,5" Grid.Row="3" Click="BtnExit_Click"/>
+                    <Button Style="{StaticResource MenuButtons}" x:Name="BtnPlay" Content="Play" Grid.Row="0" Click="BtnNew_Click"/>
+                    <Button Style="{StaticResource MenuButtons}" x:Name="BtnContinue" IsEnabled="{Binding CanContinue}" Content="Continue" Grid.Row="1" Click="BtnContinue_Click"/>
+                    <Button Style="{StaticResource MenuButtons}" x:Name="BtnSettings" Content="Settings" Grid.Row="2" Click="BtnSettings_Click"/>
+                    <Button Style="{StaticResource MenuButtons}" x:Name="BtnExit" Content="Exit" Grid.Row="3" Click="BtnExit_Click"/>
                 </Grid>
                 <Label Content="Made By M.Emre KURT" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="10" Foreground="White"/>
             </Grid>
         </Grid>
-        <local:SettingsUserControl x:Name="settingsScreen" Grid.ColumnSpan="3" Grid.RowSpan="3" Visibility="Collapsed"/>
+        <ContentControl x:Name="ContentController" Visibility="Visible" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid x:Name="ContenGrid">
+                <Button Style="{StaticResource RoundCorner}" x:Name="BackButton"
+                        Content="&lt;" VerticalAlignment="Top" MinHeight="50" MinWidth="50" Margin="10,10" 
+                        HorizontalAlignment="Left" Click="BtnBack_Click" IsDefault="True" Panel.ZIndex="5"/>
+            </Grid>
+        </ContentControl>
     </Grid>
 </Window>

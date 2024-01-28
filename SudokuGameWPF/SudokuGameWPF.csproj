@@ -56,11 +56,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\CollectionExtensions.cs" />
+    <Compile Include="Helpers\Commons.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />
+    <Compile Include="Models\GameData.cs" />
     <Compile Include="Models\PlayerData.cs" />
     <Compile Include="Models\PlayerManager.cs" />
     <Compile Include="Models\SudokuGenerator.cs" />
-    <Compile Include="Models\SudokuGridModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NotifactionController.cs" />
     <Compile Include="ViewModel\SudokuPlaygroundVM.cs" />
@@ -74,6 +75,9 @@
     <Compile Include="Views\NotificationWindow.xaml.cs">
       <DependentUpon>NotificationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PlayGroundUserControl.xaml.cs">
+      <DependentUpon>PlayGroundUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PlayGroundWindow.xaml.cs">
       <DependentUpon>PlayGroundWindow.xaml</DependentUpon>
     </Compile>
@@ -85,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NotificationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayGroundUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

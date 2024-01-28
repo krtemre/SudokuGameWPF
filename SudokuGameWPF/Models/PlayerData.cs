@@ -5,11 +5,15 @@ using System.Runtime.CompilerServices;
 
 namespace SudokuGameWPF.Models
 {
-    public enum PlayerDiffuciltySettings
+    public enum PlayerDiffuciltySettingsEnum : byte
     {
+        [Description("Easy")]
         Easy = 0,
+        [Description("Medium")]
         Medium = 1,
+        [Description("Hard")]
         Hard = 2,
+        [Description("Expert")]
         Expert = 3,
     }
 
@@ -25,9 +29,9 @@ namespace SudokuGameWPF.Models
         public PlayerData()
         {
             canContinue = false;
-            diffuciltySettings = PlayerDiffuciltySettings.Easy;
-            game = new List<int[]>();
-            solvedGame = new List<int[]>();
+            diffuciltySetting = PlayerDiffuciltySettingsEnum.Easy;
+            game = new GameData();
+            solvedGame = new GameData();
         }
 
         private bool canContinue;
@@ -44,35 +48,32 @@ namespace SudokuGameWPF.Models
             }
         }
 
-        private List<int[]> game;
-        public List<int[]> Game
+        private GameData game;
+        public GameData Game
         {
             get { return game; }
             set { game = value; }
         }
 
-        private List<int[]> solvedGame;
-
-        public List<int[]> SolvedGame
+        private GameData solvedGame;
+        public GameData SolvedGame
         {
             get { return solvedGame; }
             set { solvedGame = value; }
         }
 
         private int mistakes;
-
         public int Mistakes
         {
             get { return mistakes; }
             set { mistakes = value; }
         }
 
-
-        private PlayerDiffuciltySettings diffuciltySettings;
-        public PlayerDiffuciltySettings DiffuciltySettings
+        private PlayerDiffuciltySettingsEnum diffuciltySetting;
+        public PlayerDiffuciltySettingsEnum DiffuciltySetting
         {
-            get { return diffuciltySettings; }
-            set { diffuciltySettings = value; }
+            get { return diffuciltySetting; }
+            set { diffuciltySetting = value; }
         }
     }
 }

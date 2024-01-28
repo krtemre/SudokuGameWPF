@@ -35,6 +35,27 @@ namespace SudokuGameWPF.Models
 
         private PlayerManager() { }
 
+        private GameData ConvertToGameData(int[,] values)
+        {
+            GameData gameData = new GameData();
+
+            int gridIndex = 0;
+            int valueIndex = 0;
+
+            for (int row = 0; row < 9; row++)
+            {
+                for (int col = 0; col < 9; col++)
+                {
+                    gridIndex = ((row / 3) * 3) + (col / 3);
+                    valueIndex = ((row % 3) * 3) + (col % 3);
+
+                    gameData.Grids[gridIndex].Values[valueIndex] = values[row, col];
+                }
+            }
+
+            return gameData;
+        }
+
         private void LoadGame()
         {
 
@@ -44,50 +65,32 @@ namespace SudokuGameWPF.Models
 
         public void NewGame()
         {
-            var game = SudokuGenerator.GetSolvedSudoku();
-
-            this.PlayerData.SolvedGame = Convert(game);
+            var arraySolved = SudokuGenerator.GetSolvedSudoku();
+            this.PlayerData.SolvedGame = ConvertToGameData(arraySolved);
 
             int removeK = 0;
 
-            switch (this.PlayerData.DiffuciltySettings)
+            switch (this.PlayerData.DiffuciltySetting)
             {
-                case PlayerDiffuciltySettings.Easy:
+                case PlayerDiffuciltySettingsEnum.Easy:
                     removeK = 25;
                     break;
-                case PlayerDiffuciltySettings.Medium:
+                case PlayerDiffuciltySettingsEnum.Medium:
                     removeK = 35;
                     break;
-                case PlayerDiffuciltySettings.Hard:
+                case PlayerDiffuciltySettingsEnum.Hard:
                     removeK = 50;
                     break;
-                case PlayerDiffuciltySettings.Expert:
+                case PlayerDiffuciltySettingsEnum.Expert:
                     removeK = 60;
                     break;
                 default:
                     break;
             }
 
-            this.PlayerData.Game = Convert(SudokuGenerator.RemoveKDigits(removeK, game));
+            this.PlayerData.Game = ConvertToGameData(SudokuGenerator.RemoveKDigits(removeK, arraySolved));
             this.PlayerData.CanContinue = true;
             LoadGame();
-        }
-
-        public List<int[]> Convert(int[,] game)
-        {
-            List<int[]> converted = new List<int[]>();
-
-            for (int i = 0; i < 9; i++)
-            {
-                var mat = new int[9];
-
-                for (int j = 0; j < 9; j++)
-                {
-                    mat[j] = game[i, j];
-                }
-                converted.Add(mat);
-            }
-            return converted;
         }
 
         public void Continue()
@@ -114,6 +117,32 @@ namespace SudokuGameWPF.Models
             {
                 MessageBox.Show("An error occured!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        public bool ControlIsValueTrue(int row, int col, int num)
+        {
+            if (PlayerData.SolvedGame == null)
+            {
+                return false;
+            }
+
+            int gridIndex = ((row / 3) * 3) + (col / 3);
+            int index = ((row % 3) * 3) + (col % 3);
+
+            return PlayerData.SolvedGame.Grids[gridIndex].Values[index] == num;
+        }
+
+        public void UpdateValue(int row, int col, int num)
+        {
+            if (PlayerData.Game == null)
+            {
+                return;
+            }
+
+            int gridIndex = ((row / 3) * 3) + (col / 3);
+            int index = ((row % 3) * 3) + (col % 3);
+
+            PlayerData.Game.Grids[gridIndex].Values[index] = num;
         }
     }
 }

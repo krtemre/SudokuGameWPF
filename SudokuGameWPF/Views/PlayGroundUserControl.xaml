@@ -1,12 +1,11 @@
-﻿<Window x:Class="SudokuGameWPF.Views.PlayGroundWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SudokuGameWPF.Views"
-        mc:Ignorable="d"
-        Title="PlayGroundWindow" Height="800" Width="600" 
-        Background="{StaticResource AppBackGround}" ResizeMode="CanResizeWithGrip">
+﻿<UserControl x:Class="SudokuGameWPF.Views.PlayGroundUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SudokuGameWPF.Views"
+             mc:Ignorable="d" Background="{StaticResource AppBackGround}"
+             d:DesignHeight="700" d:DesignWidth="550">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -14,11 +13,11 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="500"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="4">
             <Grid x:Name="playGround_Grid" Background="{StaticResource PlayGroundBackground}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -31,7 +30,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+                <Border Grid.Row="0" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
                     <Grid x:Name="Grid0_0" Tag="0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -57,8 +56,7 @@
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn2_2" Content="0" Tag="2,2" Grid.Column="2" Grid.Row="2" Click="BtnPlayground_Click"/>
                     </Grid>
                 </Border>
-                
-                <Border Grid.Row="0" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+                <Border Grid.Row="0" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
                     <Grid x:Name="Grid0_1" Tag="0,1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -74,18 +72,17 @@
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn0_3" Content="0" Tag="0,3" Grid.Column="0" Grid.Row="0" Click="BtnPlayground_Click"/>
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn0_4" Content="0" Tag="0,4" Grid.Column="1" Grid.Row="0" Click="BtnPlayground_Click"/>
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn0_5" Content="0" Tag="0,5" Grid.Column="2" Grid.Row="0" Click="BtnPlayground_Click"/>
-                                                                                      
+
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn1_3" Content="0" Tag="1,3" Grid.Column="0" Grid.Row="1" Click="BtnPlayground_Click"/>
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn1_4" Content="0" Tag="1,4" Grid.Column="1" Grid.Row="1" Click="BtnPlayground_Click"/>
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn1_5" Content="0" Tag="1,5" Grid.Column="2" Grid.Row="1" Click="BtnPlayground_Click"/>
-                                                                                      
+
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn2_3" Content="0" Tag="2,3" Grid.Column="0" Grid.Row="2" Click="BtnPlayground_Click"/>
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn2_4" Content="0" Tag="2,4" Grid.Column="1" Grid.Row="2" Click="BtnPlayground_Click"/>
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn2_5" Content="0" Tag="2,5" Grid.Column="2" Grid.Row="2" Click="BtnPlayground_Click"/>
                     </Grid>
                 </Border>
-                
-                <Border Grid.Row="0" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+                <Border Grid.Row="0" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,0,1">
                     <Grid x:Name="Grid0_2" Tag="0,2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -112,7 +109,7 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+                <Border Grid.Row="1" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
                     <Grid x:Name="Grid1_0" Tag="1,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -138,8 +135,7 @@
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn5_2" Content="0" Tag="5,2" Grid.Column="2" Grid.Row="2" Click="BtnPlayground_Click"/>
                     </Grid>
                 </Border>
-                
-                <Border Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+                <Border Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
                     <Grid x:Name="Grid1_1" Tag="1,1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -165,8 +161,7 @@
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn5_5" Content="0" Tag="5,5" Grid.Column="2" Grid.Row="2" Click="BtnPlayground_Click"/>
                     </Grid>
                 </Border>
-                
-                <Border Grid.Row="1" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+                <Border Grid.Row="1" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,0,1">
                     <Grid x:Name="Grid1_2" Tag="1,2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -193,7 +188,7 @@
                     </Grid>
                 </Border>
 
-                <Border Grid.Row="2" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+                <Border Grid.Row="2" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,0">
                     <Grid x:Name="Grid2_0" Tag="2,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -219,8 +214,7 @@
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn8_2" Content="0" Tag="8,2" Grid.Column="2" Grid.Row="2" Click="BtnPlayground_Click"/>
                     </Grid>
                 </Border>
-                
-                <Border Grid.Row="2" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+                <Border Grid.Row="2" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,0">
                     <Grid x:Name="Grid2_1" Tag="2,1">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -246,8 +240,7 @@
                         <Button Style="{StaticResource PlaygroundButton}" x:Name="Btn8_5" Content="0" Tag="8,5" Grid.Column="2" Grid.Row="2" Click="BtnPlayground_Click"/>
                     </Grid>
                 </Border>
-                
-                <Border Grid.Row="2" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="1.5">
+                <Border Grid.Row="2" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,0,0">
                     <Grid x:Name="Grid2_2" Tag="2,2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -278,8 +271,9 @@
 
         <Grid Grid.Row="2" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
                 <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="1">
@@ -297,16 +291,16 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Style="{StaticResource SelectorButton}" Content="1" Grid.Column="1" Margin="10" Click="BtnSelection_Click"/>
-                <Button Style="{StaticResource SelectorButton}" Content="2" Grid.Column="2" Margin="10" Click="BtnSelection_Click"/>
-                <Button Style="{StaticResource SelectorButton}" Content="3" Grid.Column="3" Margin="10" Click="BtnSelection_Click"/>
-                <Button Style="{StaticResource SelectorButton}" Content="4" Grid.Column="4" Margin="10" Click="BtnSelection_Click"/>
-                <Button Style="{StaticResource SelectorButton}" Content="5" Grid.Column="5" Margin="10" Click="BtnSelection_Click"/>
-                <Button Style="{StaticResource SelectorButton}" Content="6" Grid.Column="6" Margin="10" Click="BtnSelection_Click"/>
-                <Button Style="{StaticResource SelectorButton}" Content="7" Grid.Column="7" Margin="10" Click="BtnSelection_Click"/>
-                <Button Style="{StaticResource SelectorButton}" Content="8" Grid.Column="8" Margin="10" Click="BtnSelection_Click"/>
-                <Button Style="{StaticResource SelectorButton}" Content="9" Grid.Column="9" Margin="10" Click="BtnSelection_Click"/>
+                <Button Style="{StaticResource SelectorButton}" Content="1" Grid.Column="1" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown"  PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp" Click="BtnSelection_Click"/>
+                <Button Style="{StaticResource SelectorButton}" Content="2" Grid.Column="2" Margin="7" Click="BtnSelection_Click"/>
+                <Button Style="{StaticResource SelectorButton}" Content="3" Grid.Column="3" Margin="7" Click="BtnSelection_Click"/>
+                <Button Style="{StaticResource SelectorButton}" Content="4" Grid.Column="4" Margin="7" Click="BtnSelection_Click"/>
+                <Button Style="{StaticResource SelectorButton}" Content="5" Grid.Column="5" Margin="7" Click="BtnSelection_Click"/>
+                <Button Style="{StaticResource SelectorButton}" Content="6" Grid.Column="6" Margin="7" Click="BtnSelection_Click"/>
+                <Button Style="{StaticResource SelectorButton}" Content="7" Grid.Column="7" Margin="7" Click="BtnSelection_Click"/>
+                <Button Style="{StaticResource SelectorButton}" Content="8" Grid.Column="8" Margin="7" Click="BtnSelection_Click"/>
+                <Button Style="{StaticResource SelectorButton}" Content="9" Grid.Column="9" Margin="7" Click="BtnSelection_Click"/>
             </Grid>
         </Grid>
     </Grid>
-</Window>
+</UserControl>
