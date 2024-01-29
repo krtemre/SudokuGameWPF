@@ -62,6 +62,7 @@
     <Compile Include="Models\PlayerData.cs" />
     <Compile Include="Models\PlayerManager.cs" />
     <Compile Include="Models\SudokuGenerator.cs" />
+    <Compile Include="ViewModel\ButtonModels.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\NotifactionController.cs" />
     <Compile Include="ViewModel\SudokuPlaygroundVM.cs" />

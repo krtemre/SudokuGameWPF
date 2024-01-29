@@ -78,6 +78,7 @@
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                                <Setter Property="Background" TargetName="border" Value="DarkGray"/>
                             </Trigger>
                             <Trigger Property="IsDefault" Value="True">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource MenuBtnaasd}"/>
@@ -101,15 +102,26 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0.5">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0.5">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="IsDefault" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter Property="Background" TargetName="border" Value="#A57EFFF5"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
-                <Trigger Property="IsDefault" Value="True">
-                    <Setter Property="Background" Value="#A518DCFF"/>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#A57EFFF5"/>
                 </Trigger>
                 <MultiTrigger>
                     <MultiTrigger.Conditions>
@@ -138,18 +150,31 @@
                             </Border>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource SelectorBtnPressed}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource SelectorBtnHighlight}"/>
-                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="Yellow"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsEnabled" Value="True"/>
+                                    <Condition Property="IsPressed" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.Setters>
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource SelectorBtnPressed}"/>
+                                </MultiTrigger.Setters>
+                            </MultiTrigger>
+                            <!--
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
                             </Trigger>
                             <Trigger Property="IsDefault" Value="True">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource SelectorBtnSelected}"/>
                             </Trigger>
+                            -->
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>

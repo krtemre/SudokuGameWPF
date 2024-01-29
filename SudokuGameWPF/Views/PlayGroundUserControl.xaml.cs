@@ -2,27 +2,27 @@
 using SudokuGameWPF.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Windows;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Threading;
 
 namespace SudokuGameWPF.Views
 {
-    /// <summary>
-    /// Interaction logic for PlayGroundUserControl.xaml
-    /// </summary>
     public partial class PlayGroundUserControl : UserControl
     {
-        private Button lastButton = null;
-        private Button lastSelected = null;
+        private PlaygroundSelectorButton lastSelectorBtn = null;
+        private PlaygroundButton lastPlaygroundBtn = null;
 
-        private List<Grid> playgroundGrids = null;
+        private List<PlaygroundGrid> playgroundGrids = null;
+
+        private Dictionary<int, int> TotalValuesInGame = new Dictionary<int, int>();
+        private int TotatDisabeledButtons = 0;
 
         #region Timer
-        private DateTime buttonPressedTime;
-        private const int ACTIVETOR_TIME_IN_MS = 1000;
-        private DispatcherTimer timer = new DispatcherTimer();
+        private DateTime selectorButtonPressedTime;
+        private const int SELECTOR_ACTIVATOR_TIME_IN_MS = 1000;
+        private DateTime playgroundButtonPressedTime;
+        private const int ACTIVATOR_TIME_IN_MS = 1000;
         #endregion
 
         public PlayGroundUserControl()
@@ -30,89 +30,207 @@ namespace SudokuGameWPF.Views
             InitializeComponent();
             InitGrids(PlayerManager.Instance.PlayerData.Game);
 
-            buttonPressedTime = DateTime.MaxValue;
-
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(500);
-            timer.Tick += Timer_Tick;
-            timer.Start();
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            if(DateTime.UtcNow.Subtract(buttonPressedTime).TotalMilliseconds > ACTIVETOR_TIME_IN_MS)
-            {
-                //TODO
-            }
+            selectorButtonPressedTime = DateTime.MaxValue;
         }
 
         public void UpdatePlayground()
         {
             UpdateGrids(PlayerManager.Instance.PlayerData.Game);
+
+            if (lastSelectorBtn != null)
+            {
+                lastSelectorBtn.IsDefault = false;
+            }
+            lastSelectorBtn = null;
+            lastPlaygroundBtn = null;
         }
 
         #region Buttons
-        private void BtnPlayground_Click(object sender, RoutedEventArgs e)
+        private void Playground_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (sender is Button btn)
+            if (sender is PlaygroundButton playgroundBtn)
             {
-                if (lastButton != null)
+                playgroundButtonPressedTime = DateTime.UtcNow;
+                if (lastSelectorBtn == null || !lastSelectorBtn.IsSelected)
                 {
-                    lastButton.IsDefault = false;
+                    DeHighlightAll();
                 }
 
-                btn.IsDefault = true;
-                lastButton = btn;
-
-                CheckUpdates();
+                if (lastPlaygroundBtn != null)
+                {
+                    lastPlaygroundBtn.IsSelected = false;
+                }
             }
         }
 
-        private void BtnSelection_Click(object sender, RoutedEventArgs e)
+        private void Playground_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (sender is Button btn)
+            if (sender is PlaygroundButton playgroundBtn)
             {
-                if (lastSelected != null)
-                {
-                    if (lastSelected.Content.Equals(btn.Content))
-                    {
-                        lastSelected.IsDefault = false;
-                        lastSelected = null;
-                    }
-                    else
-                    {
-                        lastSelected.IsDefault = false;
+                playgroundBtn.IsSelected = true;
+                lastPlaygroundBtn = playgroundBtn;
 
-                        btn.IsDefault = true;
-                        lastSelected = btn;
-                    }
+                if (DateTime.UtcNow.Subtract(playgroundButtonPressedTime).TotalMilliseconds > ACTIVATOR_TIME_IN_MS)
+                {
+                    playgroundBtn.InHighlightArea = true;
+                    HighlightByPosition(playgroundBtn.Row, playgroundBtn.Col, playgroundBtn.GridIndex);
                 }
                 else
                 {
-                    btn.IsDefault = true;
-                    lastSelected = btn;
+                    TryUpdatePlayGround();
                 }
-
-                CheckUpdates();
             }
         }
 
         private void Selector_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (sender is PlaygroundSelectorButton selectorBtn)
+            {
+                selectorButtonPressedTime = DateTime.UtcNow;
 
+                if (lastSelectorBtn != null)
+                {
+                    lastSelectorBtn.IsSelected = false;
+                }
+            }
         }
 
         private void Selector_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (sender is PlaygroundSelectorButton selectorBtn)
+            {
+                lastSelectorBtn = selectorBtn;
 
+                if (DateTime.UtcNow.Subtract(selectorButtonPressedTime).TotalMilliseconds > SELECTOR_ACTIVATOR_TIME_IN_MS)
+                {
+                    lastSelectorBtn.IsSelected = true;
+                    HighlightByNumber(selectorBtn.Value);
+                }
+                else
+                {
+                    TryUpdatePlayGround();
+
+                    if (lastPlaygroundBtn == null || !lastPlaygroundBtn.IsSelected)
+                    {
+                        DeHighlightAll();
+                    }
+
+                    lastSelectorBtn = null;
+                }
+            }
+        }
+
+        private void TryUpdatePlayGround()
+        {
+            if (lastSelectorBtn == null || lastPlaygroundBtn == null) { return; }
+
+            if (lastPlaygroundBtn.Value != 0) { return; }
+
+            int value = lastSelectorBtn.Value;
+            int row = lastPlaygroundBtn.Row;
+            int col = lastPlaygroundBtn.Col;
+
+            bool correct = PlayerManager.Instance.ControlIsValueTrue(row, col, value);
+
+            if (correct)
+            {
+                lastPlaygroundBtn.Value = value;
+                lastPlaygroundBtn.IsSelected = false;
+                lastPlaygroundBtn.InHighlightArea = true;
+
+                if (TotalValuesInGame.ContainsKey(value))
+                {
+                    TotalValuesInGame[value]++;
+                }
+                else
+                {
+                    TotalValuesInGame.Add(value, 1);
+                }
+                CheckRemainingNumbers();
+            }
+            else
+            {
+                NotifactionController.Instance.ShowNotification(NotificationType.Warning, $"The {value} is not suitable at Row : {row} and Col : {col}");
+                PlayerManager.Instance.PlayerData.Mistakes++;
+            }
+        }
+
+        private void CheckRemainingNumbers()
+        {
+            bool anyHiglight = false;
+
+            if (lastPlaygroundBtn != null)
+            {
+                anyHiglight |= lastPlaygroundBtn.InHighlightArea;
+            }
+            if (lastSelectorBtn != null)
+            {
+                anyHiglight |= lastSelectorBtn.IsSelected;
+            }
+
+            var noRemainingList = TotalValuesInGame.Where(s => s.Value >= 9).ToList();
+
+            if (noRemainingList != null && noRemainingList.Count > 0)
+            {
+                foreach (var value in noRemainingList)
+                {
+                    if (SelectorButtonsGrid.Children[value.Key - 1] is PlaygroundSelectorButton btn)
+                    {
+                        if (!btn.IsEnabled) { continue; }
+
+                        if(btn == lastSelectorBtn)
+                        {
+                            lastSelectorBtn = null;
+                        }
+
+                        btn.IsSelected = false;
+                        btn.IsEnabled = false;
+                        btn.Background = Brushes.DarkGray;
+                        btn.Foreground = Brushes.Yellow;
+                        TotatDisabeledButtons++;
+                    }
+                }
+            }
+
+            if(TotatDisabeledButtons >= 9)
+            {
+                //TODO Win Condition
+            }
         }
         #endregion
 
-        private void HighlightByPosition(int x, int y, int gridIndex)
+        private void HighlightByPosition(int row, int col, int gridIndex)
         {
             //TODO
             //if 2,2 is selected highlight first Grid and all 2,x & x,2.
             //Highlight differently 2,2
+
+            foreach (PlaygroundGrid grid in playgroundGrids)
+            {
+                for (int i = 0; i < grid.Children.Count; i++)
+                {
+                    if (grid.Children[i] is PlaygroundButton btn)
+                    {
+                        btn.InHighlightArea = btn.GridIndex == gridIndex;
+                        btn.InHighlightArea |= btn.Row == row;
+                        btn.InHighlightArea |= btn.Col == col;
+                    }
+                }
+            }
+        }
+
+        private void DeHighlightAll()
+        {
+            foreach (PlaygroundGrid grid in playgroundGrids)
+            {
+                for (int i = 0; i < grid.Children.Count; i++)
+                {
+                    if (grid.Children[i] is PlaygroundButton btn)
+                    {
+                        btn.InHighlightArea = false;
+                    }
+                }
+            }
         }
 
         private void HighlightByNumber(int number)
@@ -120,17 +238,28 @@ namespace SudokuGameWPF.Views
             //TODO 
             //if 3 is selected highlight all 3s in game
 
+            foreach (PlaygroundGrid grid in playgroundGrids)
+            {
+                for (int i = 0; i < grid.Children.Count; i++)
+                {
+                    if (grid.Children[i] is PlaygroundButton btn)
+                    {
+                        btn.InHighlightArea = btn.Value == number;
+                        btn.IsSelected = false;
+                    }
+                }
+            }
         }
 
         private void CheckUpdates()
         {
-            if (lastSelected != null && lastButton != null)
+            if (lastSelectorBtn != null && lastPlaygroundBtn != null)
             {
-                bool isTrue = string.IsNullOrEmpty(lastButton.Content.ToString());
-                string tag = lastSelected.Content.ToString();
+                bool isTrue = string.IsNullOrEmpty(lastPlaygroundBtn.Content.ToString());
+                string tag = lastSelectorBtn.Content.ToString();
                 int val = int.Parse(tag);
 
-                string[] pos = lastButton.Tag.ToString().Split(',');
+                string[] pos = lastPlaygroundBtn.Tag.ToString().Split(',');
                 int x = int.Parse(pos[0]);
                 int y = int.Parse(pos[1]);
 
@@ -138,12 +267,12 @@ namespace SudokuGameWPF.Views
 
                 if (isTrue)
                 {
-                    lastButton.Content = tag;
+                    lastPlaygroundBtn.Content = tag;
                     PlayerManager.Instance.UpdateValue(x, y, val);
-                    lastButton.Foreground = Brushes.Green;
-                    lastButton = null;
-                    lastSelected.IsDefault = false;
-                    lastSelected = null;
+                    lastPlaygroundBtn.Foreground = Brushes.Green;
+                    lastPlaygroundBtn = null;
+                    lastSelectorBtn.IsDefault = false;
+                    lastSelectorBtn = null;
                 }
                 else
                 {
@@ -154,7 +283,7 @@ namespace SudokuGameWPF.Views
 
         private void InitGrids(GameData gameData)
         {
-            playgroundGrids = new List<Grid>()
+            playgroundGrids = new List<PlaygroundGrid>()
             {
                 Grid0_0,
                 Grid0_1,
@@ -175,17 +304,56 @@ namespace SudokuGameWPF.Views
         private void UpdateGrids(GameData gameData)
         {
             if (playgroundGrids == null) { return; }
-
+            TotatDisabeledButtons = 0;
+            TotalValuesInGame.Clear();
+            foreach (var item in SelectorButtonsGrid.Children)
+            {
+                if (item is PlaygroundSelectorButton btn)
+                {
+                    btn.IsEnabled = true;
+                    btn.Foreground = Brushes.White;
+                }
+            }
 
             for (int i = 0; i < playgroundGrids.Count; i++)
             {
-                Grid grid = playgroundGrids[i];
+                PlaygroundGrid grid = playgroundGrids[i];
                 for (int j = 0; j < grid.Children.Count; j++)
                 {
-                    if (grid.Children[j] is Button btn)
+                    if (grid.Children[j] is PlaygroundButton btn)
                     {
                         int val = gameData.Grids[i].Values[j];
-                        btn.Content = val == 0 ? "" : val.ToString();
+                        btn.Value = val;
+                        btn.GridIndex = grid.GridIndex;
+                        btn.GridPosition_X = j / 3; // 0 1 2
+                        btn.GridPosition_Y = j % 3; // 0 1 2
+                        btn.IsSelected = false;
+                        btn.InHighlightArea = false;
+                        btn.HasDefaultValue = val != 0;
+
+                        if (val != 0)
+                        {
+                            if (TotalValuesInGame.ContainsKey(val))
+                            {
+                                TotalValuesInGame[val]++;
+                            }
+                            else
+                            {
+                                TotalValuesInGame.Add(val, 1);
+                            }
+
+                            if (TotalValuesInGame[val] >= 9)
+                            {
+                                if(SelectorButtonsGrid.Children[val] is PlaygroundSelectorButton playgroundSelectorButton)
+                                {
+                                    playgroundSelectorButton.IsSelected = false;
+                                    playgroundSelectorButton.IsEnabled = false;
+                                    playgroundSelectorButton.Background = Brushes.DarkGray;
+                                    playgroundSelectorButton.Foreground = Brushes.Yellow;
+                                }
+                                TotatDisabeledButtons++;
+                            }
+                        }
                     }
                 }
             }

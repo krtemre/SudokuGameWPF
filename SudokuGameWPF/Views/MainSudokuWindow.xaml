@@ -43,7 +43,7 @@
                 <Label Content="Made By M.Emre KURT" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="10" Foreground="White"/>
             </Grid>
         </Grid>
-        <ContentControl x:Name="ContentController" Visibility="Visible" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <ContentControl x:Name="ContentController" Visibility="Hidden">
             <Grid x:Name="ContenGrid">
                 <Button Style="{StaticResource RoundCorner}" x:Name="BackButton"
                         Content="&lt;" VerticalAlignment="Top" MinHeight="50" MinWidth="50" Margin="10,10" 
