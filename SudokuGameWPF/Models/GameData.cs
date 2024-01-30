@@ -41,14 +41,21 @@ namespace SudokuGameWPF.Models
     [Serializable]
     public class GridData
     {
+        public GridData() 
+        { 
+
+        }
+
         public int GridIndex { get; set; }
 
         public int[] Values { get; set; }
+        public bool[] DefaultValue { get; set; }
 
         public GridData(int gridIndex, int totalValuesNumber) 
         {
             GridIndex = gridIndex;
             Values = new int[totalValuesNumber];
+            DefaultValue = new bool[totalValuesNumber];
         }
     }
 }

@@ -2,7 +2,6 @@
 using SudokuGameWPF.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -51,10 +50,9 @@ namespace SudokuGameWPF.Views
             if (sender is PlaygroundButton playgroundBtn)
             {
                 playgroundButtonPressedTime = DateTime.UtcNow;
+
                 if (lastSelectorBtn == null || !lastSelectorBtn.IsSelected)
-                {
                     DeHighlightAll();
-                }
 
                 if (lastPlaygroundBtn != null)
                 {
@@ -108,13 +106,16 @@ namespace SudokuGameWPF.Views
                 }
                 else
                 {
-                    TryUpdatePlayGround();
-
                     if (lastPlaygroundBtn == null || !lastPlaygroundBtn.IsSelected)
                     {
                         DeHighlightAll();
                     }
+                    else
+                    {
+                        TryUpdatePlayGround();
+                    }
 
+                    lastSelectorBtn.IsSelected = false;
                     lastSelectorBtn = null;
                 }
             }
@@ -138,6 +139,10 @@ namespace SudokuGameWPF.Views
                 lastPlaygroundBtn.IsSelected = false;
                 lastPlaygroundBtn.InHighlightArea = true;
 
+                int index = lastPlaygroundBtn.GridPosition_X * 3 + lastPlaygroundBtn.GridPosition_Y;
+
+                PlayerManager.Instance.PlayerData.Game.Grids[lastPlaygroundBtn.GridIndex].Values[index] = value;
+
                 if (TotalValuesInGame.ContainsKey(value))
                 {
                     TotalValuesInGame[value]++;
@@ -157,42 +162,19 @@ namespace SudokuGameWPF.Views
 
         private void CheckRemainingNumbers()
         {
-            bool anyHiglight = false;
+            if (lastSelectorBtn == null) { return; }
 
-            if (lastPlaygroundBtn != null)
+            if (TotalValuesInGame.ContainsKey(lastSelectorBtn.Value))
             {
-                anyHiglight |= lastPlaygroundBtn.InHighlightArea;
-            }
-            if (lastSelectorBtn != null)
-            {
-                anyHiglight |= lastSelectorBtn.IsSelected;
-            }
-
-            var noRemainingList = TotalValuesInGame.Where(s => s.Value >= 9).ToList();
-
-            if (noRemainingList != null && noRemainingList.Count > 0)
-            {
-                foreach (var value in noRemainingList)
+                if (TotalValuesInGame[lastSelectorBtn.Value] >= 9)
                 {
-                    if (SelectorButtonsGrid.Children[value.Key - 1] is PlaygroundSelectorButton btn)
-                    {
-                        if (!btn.IsEnabled) { continue; }
-
-                        if(btn == lastSelectorBtn)
-                        {
-                            lastSelectorBtn = null;
-                        }
-
-                        btn.IsSelected = false;
-                        btn.IsEnabled = false;
-                        btn.Background = Brushes.DarkGray;
-                        btn.Foreground = Brushes.Yellow;
-                        TotatDisabeledButtons++;
-                    }
+                    lastSelectorBtn.Completed = true;
+                    TotatDisabeledButtons++;
+                    lastSelectorBtn = null;
                 }
             }
 
-            if(TotatDisabeledButtons >= 9)
+            if (TotatDisabeledButtons >= 9)
             {
                 //TODO Win Condition
             }
@@ -329,7 +311,7 @@ namespace SudokuGameWPF.Views
                         btn.GridPosition_Y = j % 3; // 0 1 2
                         btn.IsSelected = false;
                         btn.InHighlightArea = false;
-                        btn.HasDefaultValue = val != 0;
+                        btn.HasDefaultValue = gameData.Grids[i].DefaultValue[j];
 
                         if (val != 0)
                         {
@@ -344,7 +326,7 @@ namespace SudokuGameWPF.Views
 
                             if (TotalValuesInGame[val] >= 9)
                             {
-                                if(SelectorButtonsGrid.Children[val] is PlaygroundSelectorButton playgroundSelectorButton)
+                                if (SelectorButtonsGrid.Children[val - 1] is PlaygroundSelectorButton playgroundSelectorButton)
                                 {
                                     playgroundSelectorButton.IsSelected = false;
                                     playgroundSelectorButton.IsEnabled = false;

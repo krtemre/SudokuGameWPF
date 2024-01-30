@@ -48,8 +48,9 @@ namespace SudokuGameWPF.Models
                 {
                     gridIndex = ((row / 3) * 3) + (col / 3);
                     valueIndex = ((row % 3) * 3) + (col % 3);
-
-                    gameData.Grids[gridIndex].Values[valueIndex] = values[row, col];
+                    int val = values[row, col];
+                    gameData.Grids[gridIndex].Values[valueIndex] = val;
+                    gameData.Grids[gridIndex].DefaultValue[valueIndex] = val != 0;
                 }
             }
 
@@ -106,7 +107,8 @@ namespace SudokuGameWPF.Models
             string path = Path.Combine(Environment.CurrentDirectory, saveFilePath);
             if (File.Exists(path))
             {
-                this.PlayerData = (PlayerData)XmlHelper.LoadFromXML(typeof(PlayerData), path);
+                var obj = XmlHelper.LoadFromXML(typeof(PlayerData), path);
+                this.PlayerData = obj as PlayerData;
             }
         }
 

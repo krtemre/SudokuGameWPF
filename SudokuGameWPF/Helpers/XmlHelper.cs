@@ -36,7 +36,8 @@ namespace SudokuGameWPF.Helpers
             {
                 XmlSerializer xmlSerializer = new XmlSerializer(type);
                 FileStream stream = new FileStream(filePath, FileMode.Open);
-                return xmlSerializer.Deserialize(stream);
+                var obj = xmlSerializer.Deserialize(stream);
+                return obj;
             }
             catch (Exception)
             {

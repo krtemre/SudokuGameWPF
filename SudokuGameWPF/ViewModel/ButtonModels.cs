@@ -1,5 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace SudokuGameWPF.ViewModel
 {
@@ -93,15 +95,48 @@ namespace SudokuGameWPF.ViewModel
                     Background = inHighlightArea ? SelectedColor : NormalColor;
                 }
             }
-        }        
+        }
     }
 
     public class PlaygroundSelectorButton : Button
     {
         #region Colors
-        private readonly SolidColorBrush SelectedColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#A518DCFF"));
+        private readonly SolidColorBrush SelectedColor = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF10329C"));
         private readonly SolidColorBrush NormalColor = Brushes.Black;
+        private readonly SolidColorBrush DisabledColor = Brushes.Gray;
+        private readonly SolidColorBrush DisabledForeground = Brushes.LightGray;
         #endregion
+
+        private Storyboard holdStoryboard;
+
+        public PlaygroundSelectorButton()
+        {
+            holdStoryboard = new Storyboard();
+
+            ColorAnimation colorAnimation = new ColorAnimation
+            {
+                To = SelectedColor.Color,
+                Duration = new System.Windows.Duration(TimeSpan.FromSeconds(1)),
+            };
+
+            Storyboard.SetTarget(colorAnimation, this);
+            Storyboard.SetTargetProperty(colorAnimation, new System.Windows.PropertyPath("(Button.Background).(SolidColorBrush.Color)"));
+
+            holdStoryboard.Children.Add(colorAnimation);
+
+            this.PreviewMouseLeftButtonDown += PlaygroundSelectorButton_PreviewMouseLeftButtonDown;
+            this.PreviewMouseLeftButtonUp += PlaygroundSelectorButton_PreviewMouseLeftButtonUp;
+        }
+
+        private void PlaygroundSelectorButton_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            holdStoryboard.Stop();
+        }
+
+        private void PlaygroundSelectorButton_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            holdStoryboard.Begin();
+        }
 
         private int value;
         public int Value
@@ -126,12 +161,27 @@ namespace SudokuGameWPF.ViewModel
             }
             set
             {
-                if (isSelected != value)
-                {
-                    isSelected = value;
+                isSelected = value;
 
-                    IsDefault = isSelected;
-                    Background = isSelected ? SelectedColor : NormalColor;
+                IsDefault = isSelected;
+                Background = isSelected ? SelectedColor : NormalColor;
+            }
+        }
+
+        private bool completed;
+        public bool Completed
+        {
+            get { return completed; }
+            set
+            {
+                completed = value;
+                this.IsEnabled = !value;
+
+                if (completed)
+                {
+                    isSelected = false;
+                    this.Background = DisabledColor;
+                    this.Foreground = DisabledForeground;
                 }
             }
         }
