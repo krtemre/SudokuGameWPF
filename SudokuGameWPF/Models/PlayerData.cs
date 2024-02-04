@@ -26,14 +26,6 @@ namespace SudokuGameWPF.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public PlayerData()
-        {
-            canContinue = false;
-            diffuciltySetting = PlayerDiffuciltySettingsEnum.Easy;
-            game = new GameData();
-            solvedGame = new GameData();
-        }
-
         private bool canContinue;
         public bool CanContinue
         {
@@ -51,14 +43,30 @@ namespace SudokuGameWPF.Models
         private GameData game;
         public GameData Game
         {
-            get { return game; }
+            get 
+            { 
+                if(game == null)
+                {
+                    game = new GameData();
+                    game.CreateGrids();
+                }
+                return game;
+            }
             set { game = value; }
         }
 
         private GameData solvedGame;
         public GameData SolvedGame
         {
-            get { return solvedGame; }
+            get 
+            {
+                if(solvedGame == null)
+                {
+                    solvedGame = new GameData();
+                    solvedGame.CreateGrids();
+                }
+                return solvedGame; 
+            }
             set { solvedGame = value; }
         }
 

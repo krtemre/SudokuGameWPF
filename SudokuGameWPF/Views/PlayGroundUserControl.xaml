@@ -7,284 +7,294 @@
              mc:Ignorable="d" Background="{StaticResource AppBackGround}"
              d:DesignHeight="700" d:DesignWidth="550">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="500"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="500"/>
-            <RowDefinition Height="4*"/>
-        </Grid.RowDefinitions>
-        <Border Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="4">
-            <Grid x:Name="playGround_Grid" Background="{StaticResource PlayGroundBackground}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="500"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="4">
+                <Grid x:Name="playGround_Grid" Background="{StaticResource PlayGroundBackground}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
+                        <viewmodel:PlaygroundGrid x:Name="Grid0_0" GridIndex="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                        </viewmodel:PlaygroundGrid>
+                    </Border>
+
+                    <Border Grid.Row="0" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
+                        <viewmodel:PlaygroundGrid x:Name="Grid0_1" GridIndex="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                        </viewmodel:PlaygroundGrid>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,0,1">
+                        <viewmodel:PlaygroundGrid x:Name="Grid0_2" GridIndex="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                        </viewmodel:PlaygroundGrid>
+                    </Border>
+
+                    <Border Grid.Row="1" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
+                        <viewmodel:PlaygroundGrid x:Name="Grid1_0" GridIndex="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                        </viewmodel:PlaygroundGrid>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
+                        <viewmodel:PlaygroundGrid x:Name="Grid1_1" GridIndex="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                        </viewmodel:PlaygroundGrid>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,0,1">
+                        <viewmodel:PlaygroundGrid x:Name="Grid1_2" GridIndex="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                        </viewmodel:PlaygroundGrid>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,0">
+                        <viewmodel:PlaygroundGrid x:Name="Grid2_0" GridIndex="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                        </viewmodel:PlaygroundGrid>
+                    </Border>
+
+                    <Border Grid.Row="2" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,0">
+                        <viewmodel:PlaygroundGrid x:Name="Grid2_1" GridIndex="7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                        </viewmodel:PlaygroundGrid>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,0,0">
+                        <viewmodel:PlaygroundGrid x:Name="Grid2_2" GridIndex="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                            <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
+                        </viewmodel:PlaygroundGrid>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="2" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="0" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
-                    <viewmodel:PlaygroundGrid x:Name="Grid0_0" GridIndex="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
+                <Grid Grid.Row="1" x:Name="SelectorButtonsGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                    </viewmodel:PlaygroundGrid>
-                </Border>
-                
-                <Border Grid.Row="0" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
-                    <viewmodel:PlaygroundGrid x:Name="Grid0_1" GridIndex="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                    </viewmodel:PlaygroundGrid>
-                </Border>
-                <Border Grid.Row="0" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,0,1">
-                    <viewmodel:PlaygroundGrid x:Name="Grid0_2" GridIndex="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                    </viewmodel:PlaygroundGrid>
-                </Border>
-
-                <Border Grid.Row="1" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
-                    <viewmodel:PlaygroundGrid x:Name="Grid1_0" GridIndex="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                    </viewmodel:PlaygroundGrid>
-                </Border>
-                <Border Grid.Row="1" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,1">
-                    <viewmodel:PlaygroundGrid x:Name="Grid1_1" GridIndex="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                    </viewmodel:PlaygroundGrid>
-                </Border>
-                <Border Grid.Row="1" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,0,1">
-                    <viewmodel:PlaygroundGrid x:Name="Grid1_2" GridIndex="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                    </viewmodel:PlaygroundGrid>
-                </Border>
-
-                <Border Grid.Row="2" Grid.Column="0" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,0">
-                    <viewmodel:PlaygroundGrid x:Name="Grid2_0" GridIndex="6">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                    </viewmodel:PlaygroundGrid>
-                </Border>
-                
-                <Border Grid.Row="2" Grid.Column="1" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,1,0">
-                    <viewmodel:PlaygroundGrid x:Name="Grid2_1" GridIndex="7">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                    </viewmodel:PlaygroundGrid>
-                </Border>
-                <Border Grid.Row="2" Grid.Column="2" BorderBrush="{StaticResource BorderBackground}" BorderThickness="0,0,0,0">
-                    <viewmodel:PlaygroundGrid x:Name="Grid2_2" GridIndex="8">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="0" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="1" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="0" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="1" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                        <viewmodel:PlaygroundButton Style="{StaticResource PlaygroundButton}" Grid.Column="2" Grid.Row="2" PreviewMouseLeftButtonDown="Playground_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Playground_PreviewMouseLeftButtonUp"/>
-                    </viewmodel:PlaygroundGrid>
-                </Border>
+                    <viewmodel:PlaygroundSelectorButton x:Name="Val1" Style="{StaticResource SelectorButton}" Value="1" Grid.Column="1" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
+                    <viewmodel:PlaygroundSelectorButton x:Name="Val2" Style="{StaticResource SelectorButton}" Value="2" Grid.Column="2" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
+                    <viewmodel:PlaygroundSelectorButton x:Name="Val3" Style="{StaticResource SelectorButton}" Value="3" Grid.Column="3" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
+                    <viewmodel:PlaygroundSelectorButton x:Name="Val4" Style="{StaticResource SelectorButton}" Value="4" Grid.Column="4" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
+                    <viewmodel:PlaygroundSelectorButton x:Name="Val5" Style="{StaticResource SelectorButton}" Value="5" Grid.Column="5" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
+                    <viewmodel:PlaygroundSelectorButton x:Name="Val6" Style="{StaticResource SelectorButton}" Value="6" Grid.Column="6" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
+                    <viewmodel:PlaygroundSelectorButton x:Name="Val7" Style="{StaticResource SelectorButton}" Value="7" Grid.Column="7" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
+                    <viewmodel:PlaygroundSelectorButton x:Name="Val8" Style="{StaticResource SelectorButton}" Value="8" Grid.Column="8" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
+                    <viewmodel:PlaygroundSelectorButton x:Name="Val9" Style="{StaticResource SelectorButton}" Value="9" Grid.Column="9" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
+                </Grid>
             </Grid>
-        </Border>
+        </Grid>
+        <Grid x:Name="WinGrid" Visibility="Hidden">
+            <Rectangle VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Fill="#33AFB781"/>
+            <Canvas x:Name="confettiCanvas" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 
-        <Grid Grid.Row="2" Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-
-            <Grid Grid.Row="1" x:Name="SelectorButtonsGrid">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <viewmodel:PlaygroundSelectorButton x:Name="Val1" Style="{StaticResource SelectorButton}" Value="1" Grid.Column="1" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
-                <viewmodel:PlaygroundSelectorButton x:Name="Val2" Style="{StaticResource SelectorButton}" Value="2" Grid.Column="2" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
-                <viewmodel:PlaygroundSelectorButton x:Name="Val3" Style="{StaticResource SelectorButton}" Value="3" Grid.Column="3" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
-                <viewmodel:PlaygroundSelectorButton x:Name="Val4" Style="{StaticResource SelectorButton}" Value="4" Grid.Column="4" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
-                <viewmodel:PlaygroundSelectorButton x:Name="Val5" Style="{StaticResource SelectorButton}" Value="5" Grid.Column="5" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
-                <viewmodel:PlaygroundSelectorButton x:Name="Val6" Style="{StaticResource SelectorButton}" Value="6" Grid.Column="6" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
-                <viewmodel:PlaygroundSelectorButton x:Name="Val7" Style="{StaticResource SelectorButton}" Value="7" Grid.Column="7" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
-                <viewmodel:PlaygroundSelectorButton x:Name="Val8" Style="{StaticResource SelectorButton}" Value="8" Grid.Column="8" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
-                <viewmodel:PlaygroundSelectorButton x:Name="Val9" Style="{StaticResource SelectorButton}" Value="9" Grid.Column="9" Margin="7" PreviewMouseLeftButtonDown="Selector_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="Selector_PreviewMouseLeftButtonUp"/>
-            </Grid>
+            <Button x:Name="winButton" Content="Play Again" Style="{StaticResource RoundCorner}"
+                    Width="250" Height="100" Click="PlayAgain_Click" Panel.ZIndex="5"
+                    VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>
 </UserControl>

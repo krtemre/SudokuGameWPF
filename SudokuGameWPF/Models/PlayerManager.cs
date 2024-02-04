@@ -1,12 +1,7 @@
 ﻿using SudokuGameWPF.Helpers;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Ink;
 
 namespace SudokuGameWPF.Models
 {
@@ -15,7 +10,7 @@ namespace SudokuGameWPF.Models
         private static object padlock = new object();
         private static PlayerManager _instance = null;
 
-        private const string saveFilePath = @"SudokuGame.xml";
+        private const string saveFilePath = @"SudokuGame";
 
         public static PlayerManager Instance
         {
@@ -38,6 +33,7 @@ namespace SudokuGameWPF.Models
         private GameData ConvertToGameData(int[,] values)
         {
             GameData gameData = new GameData();
+            gameData.CreateGrids();
 
             int gridIndex = 0;
             int valueIndex = 0;
@@ -96,7 +92,7 @@ namespace SudokuGameWPF.Models
 
         public void Continue()
         {
-            if (this.PlayerData.CanContinue) 
+            if (this.PlayerData.CanContinue)
             {
                 LoadGame();
             }
@@ -105,17 +101,13 @@ namespace SudokuGameWPF.Models
         public void LoadPlayer()
         {
             string path = Path.Combine(Environment.CurrentDirectory, saveFilePath);
-            if (File.Exists(path))
-            {
-                var obj = XmlHelper.LoadFromXML(typeof(PlayerData), path);
-                this.PlayerData = obj as PlayerData;
-            }
+            this.PlayerData = XmlHelper.ReadXMLFromSerializedFile<PlayerData>(path);
         }
 
         public void SavePlayer()
         {
             string path = Path.Combine(Environment.CurrentDirectory, saveFilePath);
-            if (!XmlHelper.SaveToXML(path, this.PlayerData, typeof(PlayerData)))
+            if (!XmlHelper.SaveToXMLFile(path, this.PlayerData))
             {
                 MessageBox.Show("An error occured!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }

@@ -2,8 +2,13 @@
 using SudokuGameWPF.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SudokuGameWPF.Views
 {
@@ -18,6 +23,8 @@ namespace SudokuGameWPF.Views
         private int TotatDisabeledButtons = 0;
 
         #region Timer
+        private DispatcherTimer confettiTimer;
+
         private DateTime selectorButtonPressedTime;
         private const int SELECTOR_ACTIVATOR_TIME_IN_MS = 1000;
         private DateTime playgroundButtonPressedTime;
@@ -30,10 +37,15 @@ namespace SudokuGameWPF.Views
             InitGrids(PlayerManager.Instance.PlayerData.Game);
 
             selectorButtonPressedTime = DateTime.MaxValue;
+            confettiTimer = new DispatcherTimer();
+            confettiTimer.Tick += ConfettiTimerTick;
+            confettiTimer.Interval = TimeSpan.FromMilliseconds(100);
         }
 
         public void UpdatePlayground()
         {
+            WinGrid.Visibility = System.Windows.Visibility.Hidden;
+            confetiCount = 0;
             UpdateGrids(PlayerManager.Instance.PlayerData.Game);
 
             if (lastSelectorBtn != null)
@@ -42,6 +54,7 @@ namespace SudokuGameWPF.Views
             }
             lastSelectorBtn = null;
             lastPlaygroundBtn = null;
+            confettiTimer.Stop();
         }
 
         #region Buttons
@@ -114,8 +127,7 @@ namespace SudokuGameWPF.Views
                     {
                         TryUpdatePlayGround();
                     }
-
-                    lastSelectorBtn.IsSelected = false;
+                    selectorBtn.IsSelected = false;
                     lastSelectorBtn = null;
                 }
             }
@@ -176,7 +188,7 @@ namespace SudokuGameWPF.Views
 
             if (TotatDisabeledButtons >= 9)
             {
-                //TODO Win Condition
+                PlayerWon();
             }
         }
         #endregion
@@ -339,6 +351,152 @@ namespace SudokuGameWPF.Views
                     }
                 }
             }
+        }
+
+        private void ConfettiTimerTick(object sender, EventArgs e)
+        {
+            PlayConfettiCanvas();
+        }
+
+        private void PlayerWon()
+        {
+            WinGrid.Visibility = System.Windows.Visibility.Visible;
+            confettiTimer.Start();
+        }
+
+        private void PlayAgain_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            PlayerManager.Instance.NewGame();
+            UpdatePlayground();
+        }
+
+        int confetiCount = 0;
+        Random _Random = new Random();
+
+        private void PlayConfettiCanvas()
+        {
+            double size = _Random.Next(10, 20);
+
+            Rectangle confettiPiece = new Rectangle
+            {
+                Width = size * 2,
+                Height = size,
+                Fill = PickBrush(),
+            };
+
+            confettiCanvas.Children.Add(confettiPiece);
+
+            double startX = _Random.NextDouble() * confettiCanvas.ActualWidth;
+            double startY = 0;
+
+            Canvas.SetLeft(confettiPiece, startX);
+            Canvas.SetTop(confettiPiece, startY);
+
+            var duration = TimeSpan.FromSeconds(_Random.Next(1, 4));
+
+            DoubleAnimation doubleAnimationY = new DoubleAnimation
+            {
+                To = confettiCanvas.ActualHeight + 50,
+                Duration = duration,
+            };
+
+            DoubleAnimation doubleAnimationRotation = new DoubleAnimation
+            {
+                To = _Random.Next(360), // Rastgele bir dönme miktarı
+                Duration = duration,
+            };
+
+            confettiPiece.RenderTransformOrigin = new Point(0.5, 0.5); // Döndürme etrafındaki orijin noktası
+            confettiPiece.RenderTransform = new RotateTransform();
+
+            Storyboard.SetTarget(doubleAnimationY, confettiPiece);
+            Storyboard.SetTarget(doubleAnimationRotation, confettiPiece);
+
+            Storyboard.SetTargetProperty(doubleAnimationY, new PropertyPath(Canvas.TopProperty));
+            Storyboard.SetTargetProperty(doubleAnimationRotation, new PropertyPath("(UIElement.RenderTransform).(RotateTransform.Angle)"));
+
+            Storyboard storyboard = new Storyboard();
+            storyboard.Completed += (sender, e) => confettiCanvas.Children.Remove(confettiPiece);
+            storyboard.Children.Add(doubleAnimationY);
+            storyboard.Children.Add(doubleAnimationRotation);
+
+            storyboard.Begin();
+        }
+
+        private void PlayConfetti()
+        {
+            double x = _Random.Next(10, (int)WinGrid.ActualWidth - 10);
+            double y = 0;
+            double s = _Random.Next(5, 15) * .1;
+            double r = _Random.Next(0, 270);
+
+            TranslateTransform translate = new TranslateTransform();
+            translate.X = x;
+            translate.Y = y;
+
+            RotateTransform rotate = new RotateTransform();
+            rotate.Angle = r;
+
+            ScaleTransform scale = new ScaleTransform();
+            scale.ScaleX = s;
+            scale.ScaleY = s;
+
+            TransformGroup transformGroup = new TransformGroup();
+            transformGroup.Children.Add(translate);
+            transformGroup.Children.Add(rotate);
+            transformGroup.Children.Add(scale);
+
+            var confetti = new Confetti
+            {
+                RenderTransform = transformGroup,
+                HorizontalAlignment = System.Windows.HorizontalAlignment.Left,
+                VerticalAlignment = System.Windows.VerticalAlignment.Top,
+                Background = PickBrush(),
+            };
+            WinGrid.Children.Add(confetti);
+            confetiCount++;
+
+            var duration = TimeSpan.FromSeconds(_Random.Next(1, 4));
+
+            y = WinGrid.ActualHeight + 100;
+            var ay = new DoubleAnimation
+            {
+                To = y,
+                Duration = duration,
+            };
+            Storyboard.SetTarget(ay, confetti.RenderTransform);
+            Storyboard.SetTargetProperty(ay, new System.Windows.PropertyPath(TranslateTransform.YProperty));
+
+            //r += _Random.Next(90, 360);
+            //var ar = new DoubleAnimation
+            //{
+            //    To = r,
+            //    Duration = duration,
+            //};
+            //Storyboard.SetTarget(ar, confetti.RenderTransform);
+            //Storyboard.SetTargetProperty(ay, new System.Windows.PropertyPath(RotateTransform.AngleProperty));
+
+            //Storyboard storyboard = new Storyboard();
+            //storyboard.Completed += (sender, e) => WinGrid.Children.Remove(confetti);
+            //storyboard.Children.Add(ay);
+            //storyboard.Children.Add(ar);
+            //storyboard.Begin();
+        }
+
+        private Brush PickBrush()
+        {
+            Brush result = Brushes.Transparent;
+
+            Random rnd = new Random();
+
+            Type brushesType = typeof(Brushes);
+
+            PropertyInfo[] properties = brushesType.GetProperties();
+
+            int random = rnd.Next(properties.Length);
+            result = (Brush)properties[random].GetValue(null, null);
+
+            return result;
         }
     }
 }

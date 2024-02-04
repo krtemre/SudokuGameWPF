@@ -188,6 +188,7 @@ namespace SudokuGameWPF.Models
             }
 
             gameData = new GameData();
+            gameData.CreateGrids();
             FillValues();
             return gameData;
         }
@@ -195,6 +196,7 @@ namespace SudokuGameWPF.Models
         public static GameData RemoveKDigits(int k, GameData game)
         {
             GameData removedGame = new GameData();
+            removedGame.CreateGrids();
             int count = k;
             while (count != 0)
             {

@@ -9,22 +9,15 @@ namespace SudokuGameWPF.Models
     [Serializable]
     public class GameData
     {
-        public int GridCount { get; set; }
-        public int GridRowCount {  get; set; }
-        public int GridColCount {  get; set; }
+        public int GridCount { get; set; } = 9;
+        public int GridRowCount { get; set; } = 3;
+        public int GridColCount { get; set; } = 3;
 
         public List<GridData> Grids { get; set; }
 
-        public GameData() 
-        {
-            GridCount = 9;
-            GridRowCount = 3;
-            GridColCount = 3;
+        public GameData() { }
 
-            CreateGrids();
-        }
-
-        private void CreateGrids()
+        public void CreateGrids()
         {
             if(Grids == null)
                 Grids = new List<GridData>();
@@ -41,14 +34,12 @@ namespace SudokuGameWPF.Models
     [Serializable]
     public class GridData
     {
-        public GridData() 
-        { 
-
-        }
+        public GridData() { }
 
         public int GridIndex { get; set; }
 
         public int[] Values { get; set; }
+
         public bool[] DefaultValue { get; set; }
 
         public GridData(int gridIndex, int totalValuesNumber) 
@@ -57,5 +48,12 @@ namespace SudokuGameWPF.Models
             Values = new int[totalValuesNumber];
             DefaultValue = new bool[totalValuesNumber];
         }
+
+        public GridData(int gridIndex, int[] values, bool[] defaultValue)
+        {
+            GridIndex = gridIndex;
+            Values = values;
+            DefaultValue = defaultValue;
+        }   
     }
 }

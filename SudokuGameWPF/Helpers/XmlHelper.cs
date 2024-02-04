@@ -1,25 +1,32 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
+using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 
 namespace SudokuGameWPF.Helpers
 {
     public static class XmlHelper
     {
-        public static bool SaveToXML(string filePath, object obj, Type objectType)
+        public static bool SaveToXMLFile(string filePath, object obj)
         {
             bool result = false;
             try
             {
+                filePath += ".xml";
+
                 if (!File.Exists(filePath))
                 {
                     File.Create(filePath);
                 }
 
-                XmlSerializer mySerializer = new XmlSerializer(objectType);
-                StreamWriter myWriter = new StreamWriter(filePath);
-                mySerializer.Serialize(myWriter, obj);
-                myWriter.Close();
+                XmlSerializer mySerializer = new XmlSerializer(obj.GetType());
+                using (StreamWriter myWriter = new StreamWriter(filePath, false, Encoding.UTF8))
+                {
+                    mySerializer.Serialize(myWriter, obj);
+                }
                 result = true;
             }
             catch (Exception)
@@ -30,19 +37,73 @@ namespace SudokuGameWPF.Helpers
             return result;
         }
 
-        public static object LoadFromXML(Type type, string filePath)
+        public static T ReadXMLFromSerializedFile<T>(string filePath)
         {
+            filePath += ".xml";
+
+            T deserializedObject;
+            XmlSerializer serializer = new XmlSerializer(typeof(T));
+
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.ValidationType = ValidationType.Schema;
+            settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessInlineSchema;
+            settings.ValidationFlags |= XmlSchemaValidationFlags.ProcessSchemaLocation;
+            settings.ValidationFlags |= XmlSchemaValidationFlags.ReportValidationWarnings;
+            settings.ValidationEventHandler += (sender, args) =>
+            {
+                if (args.Severity != XmlSeverityType.Warning)
+                    throw new XmlException();
+
+            };
+            using (XmlReader reader = XmlReader.Create(filePath, settings))
+            {
+                deserializedObject = (T)serializer.Deserialize(reader);
+            }
+            return deserializedObject;
+        }
+
+        public static T LoadFromJSONFile<T>(string path)
+        {
+            path += ".json";
+
+            string json = File.ReadAllText(path);
+
+            T deserializedObject = JsonConvert.DeserializeObject<T>(json, new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.Auto
+            });
+
+            return deserializedObject;
+        }
+
+        public static bool SaveToJSONFile(string path, object obj)
+        {
+            bool result = false;
             try
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(type);
-                FileStream stream = new FileStream(filePath, FileMode.Open);
-                var obj = xmlSerializer.Deserialize(stream);
-                return obj;
+                path += ".json";
+
+                if (!File.Exists(path))
+                {
+                    File.Create(path);
+                }
+
+                string data = JsonConvert.SerializeObject(obj, new JsonSerializerSettings()
+                {
+                    Formatting = Newtonsoft.Json.Formatting.Indented,
+                    TypeNameHandling = TypeNameHandling.Auto
+                });
+
+                File.WriteAllText(path, data, Encoding.UTF8);
+
+                result = true;
             }
             catch (Exception)
             {
+                result = false;
             }
-            return Activator.CreateInstance(type);
+
+            return result;
         }
     }
 }
